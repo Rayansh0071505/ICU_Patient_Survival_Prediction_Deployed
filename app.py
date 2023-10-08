@@ -74,7 +74,7 @@ def main():
         input_features = input_features.reshape(1, -1)  # Reshape for prediction
         prediction = predict_survival(input_features)
         # st.write("Input Features:", input_features)
-        st.write("Prediction:", prediction)
+        # st.write("Prediction:", prediction)
 
         if prediction == 1:
             st.write("Prediction: Patient is not going to survive")
