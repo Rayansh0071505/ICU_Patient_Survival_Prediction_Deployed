@@ -7,7 +7,7 @@ import streamlit as st
 model = pickle.load(open("model.pkl","rb"))
 
 # Defome a function to make prediction
-def predict_cancellation(features):
+def predict_survival(features):
     prediction = model.predict(features)
     return prediction
 
@@ -54,7 +54,7 @@ def main():
     st.write("An electrolyte critical for fluid balance and nerve function. Abnormal levels can indicate various health issues")
 
     resprate = st.text_input("Respiratory Rate")
-    st.write("he number of breaths per minute. An important vital sign indicating respiratory health and distress.")
+    st.write("The number of breaths per minute. An important vital sign indicating respiratory health and distress.")
 
     st.write("Proteins indicating heart muscle damage. Elevated levels can suggest a heart attack or other cardiac issues.")
     tnl = st.text_input("TroponinI")
@@ -66,37 +66,20 @@ def main():
     st.write(" A measure of blood acidity or alkalinity. Imbalances can indicate respiratory or metabolic issues.")
 
     if st.button("Predict"):
-
         input_features = np.array([
-            alp,
-alt,
-ast,
-age,
-bun,
-Bilirubin,
-creatinine,
-glucose,
-hr,
-k,
-lactate,
-mg,
-na,
-resprate,
-tnl,
-tnt,
-wbc,
-pH
-        ])
+            alp, alt, ast, age, bun, Bilirubin, creatinine, glucose, hr, k, lactate,
+            mg, na, resprate, tnl, tnt, wbc, pH
+        ], dtype=float)  # Convert the input features to float
 
-
-        input_features = input_features.flatten()
-        input_features = np.array(input_features).reshape(1, -1)
-        prediction = predict_cancellation(input_features)
+        input_features = input_features.reshape(1, -1)  # Reshape for prediction
+        prediction = predict_survival(input_features)
+        # st.write("Input Features:", input_features)
+        st.write("Prediction:", prediction)
 
         if prediction == 1:
-            st.write("Prediction: Patient is not going to be survived")
+            st.write("Prediction: Patient is not going to survive")
         else:
-            st.write("Prediction: Patient is going to be survived")
+            st.write("Prediction: Patient is going to survive")
 
 if __name__ == "__main__":
     main()

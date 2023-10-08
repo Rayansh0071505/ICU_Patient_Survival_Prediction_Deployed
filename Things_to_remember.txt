@@ -1,0 +1,16 @@
+1) As data is unbalance so it is necessary to balance the data as in our dataset 0 is nearly 1k+ whilee 1 is only nearly 600
+   so to avoid error we balance the data by increasing dataset of 1 by doing upsampling
+
+2) Data Balancing:
+    If the dataset is imbalanced, where class 1 (mortality) has significantly fewer samples compared to class 0 (survival), 
+    we can balance the data to ensure the model learns better from both classes.
+
+    Feature Engineering:
+    Identifying or creating features that better represent the problem at hand can enhance model performance. For medical datasets, 
+    domain knowledge can guide the creation of informative features.
+
+    Model Tuning:
+    Optimizing hyperparameters of the model can significantly improve performance. We'll focus on hyperparameter tuning for the Random 
+    Forest model.
+
+3) See for classification report before importing the model
